@@ -23,19 +23,20 @@
 
     a.config(function($stateProvider, $urlRouterProvider){
         //Setting default to home
-        $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/coursedetail");
 
         //Setting up states
         $stateProvider
-            .state('home', {
-                url: "/home",
-                templateUrl: "home.html",
-                controller: "homeCtrl"
-            })
+            
             .state('detail', {
                 url: "/detail/:id",
                 templateUrl: "detail.html",
                 controller: "detailCtrl"
+            })
+            .state('coursedetail', {
+                url: "/coursedetail",
+                templateUrl: "coursedetail.html",
+                controller: "coursedetailCtrl"
             });
     });
 
@@ -192,6 +193,53 @@
             $scope.itemDetails = _iddata;
         }, function (_error) {
             alert("Error". _error.message);
+        });
+    });
+
+
+     a.controller('coursedetailCtrl', function ($scope, $state, ParseHttpService) {
+        $scope.stateInfo = $state.current;
+
+        $scope.itemsList = {};
+
+        $scope.inputItem = {
+            value: "",
+            Name: "",
+            Major: ""
+        };
+
+        $scope.goToDetailState = function(_id) {
+            $state.go("detail", {
+                id: _id
+            });
+        };
+
+        
+
+
+       
+
+        
+
+        function populateList() {
+            return ParseHttpService.getStuff().then(function (_listData) {
+                $scope.itemsList = _listData.results;
+            });
+        }
+
+        console.log('Start')
+
+        ParseHttpService.login().then(function loginSuccess(_loggedIn) {
+            alert(_loggedIn.username + " logged in");
+
+
+            return ParseHttpService.getStuff();
+        }).then(function getObjectSuccess(_ObjectData){
+                $scope.itemsList = _ObjectData.results;
+
+
+        }, function error(_error) {
+                alert("Error" + _error);
         });
     });
 

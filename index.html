@@ -24,37 +24,23 @@
     <ion-nav-view animation="slide-left-right"></ion-nav-view>
 
 
-    <script type="text/ng-template" id="home.html">
+    <script type="text/ng-template" id="coursedetail.html">
         <ion-view title="Home">
             <ion-content class="padding">
-                <ion-item class="item-divider">Add item here</ion-item>
-                <item class="item-input">
-                    <label class="item-input-wrapper">
-                        <input type="text" placeholder="Name, Room" ng-model="inputItem.value">
-                    </label>
-                    <button class="button button-assertive" ng-click="addItem()">ADD
-                    </button>
-                </item>
+                
 
 
 
 
 
 
-                    <ion-item class="item-divider">List of Objects</ion-item>
+                    <ion-item class="item-divider">Upperclassmen taking _____</ion-item>
 
                      <ion-list ng-repeat="item in itemsList track by item.objectId">
-                        <ion-item class = "name" ng-click="goToDetailState(item.objectId)">
-                            {{$index}} - Name: {{item.name}}, Room: {{item.room}}
+                        <ion-item class = "Name" ng-click="goToDetailState(item.objectId)">
+                            {{$index + 1}} - Name: {{item.Name}}, Major: {{item.Major}}
                         </ion-item>
-                        <div class="text-right">
-                            <button class="ion-minus-circled button"
-                                    ng-click="deleteObject(item.objectId)">
-                            </button>
-                            <button class="ion-edit button"
-                                    ng-click="editObject(item)">
-                            </button>
-                        </div>
+                        
                      </ion-list>
                     </ion-item>
 
@@ -74,7 +60,7 @@
                 <pre class="padding">{{stateParamsInfo | json}}</pre>
                 <h4>Details:</h4>
                 <pre class="padding">{{itemDetails | json}}</pre>
-                Name: {{itemDetails.name}}, Room: {{itemDetails.room}}
+                Name: {{itemDetails.Name}}, Room: {{itemDetails.Major}}
 
 
             </ion-content>

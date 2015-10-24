@@ -14,8 +14,8 @@
 
         var baseURL = "https://api.parse.com/1/";
         var authenticationHeaders = {
-            "x-parse-application-id": "jYWwyHcSTkapjexeYxmYFJd5MpOGKReBvE3zZJUG",
-            "x-parse-rest-api-key": "DkB9Sm1KWoatEdcCxmmV3zCEa4xrdVogXuFcH25i"
+            "x-parse-application-id": "ojAvOaEYJdBuOdezwGx7HHh2qk6ht80418SfgIkC",
+            "x-parse-rest-api-key": "tXRZHduJmoWtqJIc1h19WylLAPzELekKrFyVcasb"
         };
 
         return {
